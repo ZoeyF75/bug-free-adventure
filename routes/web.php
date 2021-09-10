@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts');
+    return view('posts', [
+        'posts' =>  $posts //how to get those posts...
+    ]);
 });
 
 //Find a post by its slug and pass it to a view called "post"
