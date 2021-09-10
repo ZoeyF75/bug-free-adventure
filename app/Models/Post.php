@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\File; //static access to all sorts of functionali
 
 class Post
 {
+  public $title;
+  public $excerpt;
+  public $date;
+  public $body;
+
+  public function __construct(public $title, $excerpt, $date, $body)
+  {
+
+  }
+
   public static function all()
   {
     $files = File::files(resource_path("posts/"));
