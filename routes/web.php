@@ -30,4 +30,4 @@ Route::get('posts/{post}', function ($slug) { //wrapped in braces is wildcard, s
     return view('post', [
         'post' => $post
     ]);
-});
+})->where('post','[A-z_\-]+'); //find one or more of an uppercase or lowercase letter
