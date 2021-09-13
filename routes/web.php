@@ -30,7 +30,10 @@ Route::get('/', function () {
             $document->body()
         );
     }
-    ddd($posts);
+
+    return view('posts', [
+        'posts' => $posts
+    ]);
 });
 
 //Find a post by its slug and pass it to a view called "post"
