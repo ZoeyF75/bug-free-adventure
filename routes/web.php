@@ -3,6 +3,7 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
+use Illuminate\Support\Facades\File;
 use Symfony\Component\Yaml\Yaml;
 
 /*
@@ -17,20 +18,13 @@ use Symfony\Component\Yaml\Yaml;
 */
 
 Route::get('/', function () {
-   $files = File::files(resource_path("posts")); //posts folder found in resources folder
-   $posts = [];
+    $files = File::files(resource_path("posts"));
+    $documents = [];
 
-   foreach($files as $file) { //foreach post
-       $document = YamlFrontMatter::parseFile($file); //grabs metadata from each post file
-       $posts[] = new Post(
-           $document->title,
-           $document->excerpt,
-           $document->date,
-           $document->body()
-       );
-   }
-
-//    return view('posts', ['posts' => ])
+    foreach($files as $file) {
+        $documents[] = YamlFrontMatter::parseFile($file);
+    }
+    ddd($documents);
 });
 
 //Find a post by its slug and pass it to a view called "post"
